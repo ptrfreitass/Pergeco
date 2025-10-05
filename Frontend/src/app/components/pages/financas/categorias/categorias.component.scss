@@ -1,0 +1,45 @@
+.categoria-lista {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.categoria-item {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #fdfdfd;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.categoria-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.editar-btn {
+  background-color: #007bff;
+  border: none;
+  color: white;
+  padding: 5px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.editar-btn:hover {
+  background-color: #0056b3;
+}
+
+.tipo {
+  font-size: 0.9em;
+  color: #666;
+  margin-left: 10px;
+}
+
+.subcategoria-lista {
+  list-style: none;
+  margin-top: 10px;
+  padding-left: 15px;
+}

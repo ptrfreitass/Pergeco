@@ -1,0 +1,180 @@
+1. Usuário preenche email/senha na tela de login Angular
+2. Angular faz POST para /api/login
+3. Laravel valida credenciais
+4. Laravel devolve um token
+5. Angular armazena o token
+6. Angular faz chamadas futuras com o token no Header
+7. Laravel verifica o token antes de liberar rotas protegidas
+
+
+o que isso faz: "loadChildren: () => import('./dashboard/dashboard.routes').then(m => m.routes)"
+
+
+            <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+
+
+
+             Depois, podemos criar um custom request (FormRequest) no Laravel pra deixar a validação mais limpa e centralizada.
+
+👉 Exemplo: criar um RegisterRequest.php só pra cuidar da validação.
+
+{
+    "name":"Teste",
+    "email": "teste1@teste.com",
+    "password": "senha123",
+    "password_confirmation": "senha123"
+}
+
+
+  if (token) {
+    const cloned = req.clone({
+      headers: req.headers.set('Authorization', `Bearer ${token}`)
+    });
+    return next(cloned);
+
+    | Ordem | O que fazer                         | Prioridade                   |
+| ----- | ----------------------------------- | ---------------------------- |
+| 1     | Toasts / Sistema de alertas globais | Altíssima                    |
+| 2     | Interceptor de Loading (Spinner)    | Alta                         |
+| 3     | CRUD funcional (exemplo: usuários)  | Alta                         |
+| 4     | Refresh Token / Expiração de token  | Média                        |
+| 5     | Framework UI para melhorar layout   | Média                        |
+| 6     | Modularização e Lazy Loading        | Baixa, para apps maiores     |
+| 7     | Testes automatizados                | Baixa, para projetos maduros |
+
+
+ 1. Interceptor Global de Erros (tratando todos os erros HTTP com toasts automáticos)
+✅ 2. Melhorar UI/UX da Dashboard (exibir informações do usuário, criar layout básico da aplicação)
+✅ 3. Criar um sistema de Loading/Spinner durante requisições HTTP
+✅ 4. Estruturar um sistema de Services separados (ex: UserService, AuthService, ApiService)
+✅ 5. Começar a modelar recursos reais: Produtos? Tarefas? Posts? Clientes? (Você escolhe o foco da aplicação)
+✅ 6. Paginação, Filtros e Listagem com Table Components
+✅ 7. Começar a estudar Formulários Reativos para cadastros avançados
+
+
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+
+"Como fazer autenticação completa Angular + Laravel com Sanctum, protegendo as rotas da API."
+
+Fase 1 – MVP Essencial (Funcionalidades Básicas)
+Objetivo: Primeiro produto usável, mínimo viável.
+
+✔️ Login / Registro (básico)
+
+✔️ Diagnóstico Pós-Cadastro (perguntas: bancos, dívidas, renda, etc)
+
+✔️ CRUD de Categorias e Subcategorias
+importar categorias e Subcategorias padrões. continuar ou editar.
+
+✔️ Cadastro de Receita (multi-step suave)
+
+✔️ Cadastro de Despesa (multi-step estilo mini-quiz)
+
+✔️ Dashboard inicial (Saldo geral + últimas movimentações)
+
+✔️ Filtros básicos: por data e categoria
+
+✔️ Primeiros Relatórios simples (ex: Gastos por categoria - gráfico pizza/barra)
+
+
+Experiência e Usabilidade (UX/UI Upgrade)
+Objetivo: Tornar o app gostoso de usar.
+
+✔️ Navegação por etapas (Step Forms para lançamentos)
+
+✔️ Animações de microinteração (feedback visual)
+
+✔️ Tema Claro/Escuro
+
+✔️ Sugestões inteligentes no cadastro (auto completar categorias comuns)
+
+✔️ Salvar rascunhos automáticos
+
+✔️ Atalhos de gastos recorrentes
+
+✔️ Pesquisa por voz (opcional)
+
+✔️ Modo Offline (preparação inicial para PWA)
+
+✔️ Responsividade total (mobile-first layout)
+
+
+ Fase 3 – Inteligência e Personalização
+Objetivo: O sistema começar a ajudar o usuário a pensar financeiramente.
+
+✔️ Barra de Saúde Financeira (Excesso de gastos, alerta de risco, etc)
+
+✔️ Alertas de comportamento (Ex: "Você já gastou X% da sua renda esse mês")
+
+✔️ Análise de gastos por prioridade (1 a 10)
+
+✔️ Resumos mensais automáticos
+
+✔️ Modo Reflexão: 3 perguntas sobre o mês
+
+✔️ Estimativas futuras: Quanto tempo até acabar a reserva
+
+✔️ Sugestões de metas baseadas no comportamento
+
+✔️ Exportação de dados: CSV / Excel / PDF
+
+Fase 4 – Engajamento e Retenção
+Objetivo: Fazer o usuário voltar todo dia.
+
+✔️ Notificações Web Push (Lembretes e alertas)
+
+✔️ Sistema de Badges (conquistas simples)
+
+✔️ Desafios Financeiros (ex: 7 dias sem gastar com lazer)
+
+✔️ Streak de consistência (quantos dias seguidos o usuário está registrando)
+
+✔️ Comparativo mês a mês
+
+✔️ Feedback emocional nas ações (Ex: Parabéns por atingir uma meta)
+
+✔️ Mensagens personalizadas de aniversário, datas comemorativas
+
+Fase 5 – Conectividade e Integrações
+Objetivo: Automatizar o máximo possível.
+
+✔️ Importação de Extrato Bancário via CSV
+
+✔️ Importação via Open Finance (Fase posterior – usando APIs oficiais)
+
+✔️ Conexão com Google Calendar para lembretes de contas
+
+✔️ Leitura de QR Code (para puxar info de pagamentos futuros - opcional)
+
+✔️ Detecção de padrão de gastos (ex: sempre gasta com Uber → classificar automaticamente)
+
+Fase 6 – Mobile e Expansão
+Objetivo: Levar o projeto para o mundo mobile real.
+
+✔️ Transformar em PWA
+
+✔️ Build com Capacitor (Gerar APK para Android)
+
+✔️ Publicação na Google Play Store
+
+✔️ Início de versão para iOS (via Capacitor ou Flutter futuro)
+
+✔️ Sincronização automática (Offline → Online)
+
+✔️ Notificações Push reais (para mobile)
+
+✔️ Melhorias de performance mobile-first
+
+✔️ Início da camada de IA (Chatbot interno, Previsão de Gastos, etc)
+
+Visão de Futuro (Quando o projeto amadurecer)
+Feature	Impacto
+Open Banking 100% integrado	Automatização total dos lançamentos
+IA de Análise Financeira	Recomendações de economia com base no perfil
+Marketplace interno	Cursos, ebooks, parcerias financeiras
+Modo Consultoria	Modo assistente virtual de finanças
+Integração com WhatsApp	Registrar gastos por mensagens
+
+chat pra te explicar preciso na real voltar a mexer na parte visual pra assim poder dar continuidade 
+no meu trabalho. na sidebar, ao passar o mouse encima do botão finanças, quero que expanda itens dele, 
+e que ele continue clicavel. os subitens irão ser "novo registro", "previsão", "categorias", "histórico", 

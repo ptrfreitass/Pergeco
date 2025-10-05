@@ -1,0 +1,215 @@
+.sidenav {
+  background: #012a5b;
+  transition: all 0.5s ease;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  width: 16.5625rem;
+  height: 100vh;
+  box-shadow: 0.063rem 0 1.25rem 0 #8690a3;
+}
+
+.sidenav-collapsed {
+  width: 5rem;
+}
+
+.sidenav .logo-container {
+  display: flex;
+  align-items: center;
+  padding: 0.938rem 0 0.938rem;
+  width: 100%;
+}
+
+.sidenav .logo-container .logo {
+  background: #fff;
+  text-align: center;
+  width: 3rem;
+  min-width: 3rem;
+  border-radius: 0.313rem;
+  padding: 0.313rem;
+  font-size: 24px;
+  font-weight: 900;
+  cursor: pointer;
+  border: none;
+  margin-left: 15px;
+  transition: all 0.5s ease;
+}
+
+.sidenav .logo-container .logo-text {
+  margin-left: 1.5rem;
+  font-size: 24px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.sidenav .logo-container .btn-close {
+  margin-left: 55px;
+  border-radius: 50%;
+  background-color: transparent;
+  border: none;
+  transition: all 0.5s ease;
+}
+
+.sidenav .logo-container .btn-close .fa-times {
+  color: #fff;
+  font-size: 24px;
+}
+
+.sidenav-nav {
+  list-style: none;
+  padding: 0.938rem;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: calc(100% - 3.65rem);
+  cursor: pointer;
+}
+
+.sidenav-nav .sidenav-nav-item {
+  width: 100%;
+  margin-bottom: 0.625rem;
+}
+
+.sidenav-nav .sidenav-nav-item .sidenav-nav-link {
+  display: flex;
+  align-items: center;
+  height: 3rem;
+  color: #f3f3f3;
+  text-decoration: none;
+  border-radius: 0.625rem;
+  transition: all 0.3s ease;
+}
+
+.sidenav-nav .sidenav-nav-item .sidenav-nav-link .sidenav-link-icon {
+  font-size: 22px;
+  width: 2rem;
+  min-width: 2rem;
+  text-align: center;
+  padding: 12px;
+}
+
+.sidenav-nav .sidenav-nav-item .sidenav-nav-link .sidenav-link-text {
+  margin-left: 1.5rem;
+}
+
+.sidenav-nav .sidenav-nav-item:hover .sidenav-nav-link {
+  background-color: #fff;
+  color: #000;
+}
+
+.active {
+  background-color: #fff; 
+}
+
+.active .sidenav-link-icon,
+.active .sidenav-link-text {
+  color: #000;
+}
+
+//-- drop up rodapé sidebar
+
+.sidenav-footer {
+  margin-top: auto; 
+  width: 100%;
+}
+
+.sidenav-footer .btn {
+  background-color: #013b74;
+  border: none;
+  color: #fff;
+  border-radius: 0.625rem;
+  padding: 0.5rem;
+  transition: background-color 0.3s ease;
+}
+
+.sidenav-footer .btn:hover {
+  background-color: #02509c;
+}
+
+.dropdown-menu {
+  background-color: #013b74;
+  color: #fff;
+}
+
+.dropdown-item {
+  color: #fff;
+}
+
+.dropdown-item:hover {
+  background-color: #02509c;
+}
+
+
+/* ===== Submenu (Finanças) ===== */
+
+/* Estrutura base do submenu */
+.submenu {
+  list-style: none;
+  padding-left: 2rem;
+  margin-top: 0.5rem;
+  display: none;
+  transition: all 0.3s ease;
+}
+
+/* Exibir submenu quando aberto */
+.sidenav-nav-item.has-submenu.open .submenu {
+  display: block;
+}
+
+/* Estilo dos links do submenu */
+.submenu li a {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+  color: #f3f3f3;
+  text-decoration: none;
+  border-radius: 0.313rem;
+  transition: background-color 0.3s ease;
+}
+
+.submenu li a i {
+  font-size: 1.2rem;
+  width: 2rem;
+  text-align: center;
+}
+
+.submenu li a span {
+  margin-left: 1rem;
+}
+
+/* Hover no submenu */
+.submenu li a:hover {
+  background-color: #fff;
+  color: #000;
+}
+
+/* Estilo para submenu colapsado (ícones apenas) */
+.submenu.collapsed {
+  padding-left: 1rem;
+}
+
+.submenu.collapsed li a span {
+  display: none;
+}
+
+/* ===== Estado ativo ===== */
+.active, .active-sub {
+  background-color: #fff;
+  color: #000;
+}
+
+/* ===== Estilo do item principal com submenu aberto ===== */
+.sidenav-nav-item.has-submenu.open > .sidenav-nav-link {
+  background-color: #02509c;
+}
+
+/* ===== Footer (botão do rodapé) ===== */
+.sidenav-footer .btn {
+  background-color: #013b74;
+  color: #fff;
+}
+
+body.dark-mode .sidenav-footer .btn {
+  background-color: #383838;
+}

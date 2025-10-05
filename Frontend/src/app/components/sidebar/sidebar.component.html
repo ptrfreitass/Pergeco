@@ -1,0 +1,74 @@
+<div class="sidenav" [ngClass]="isSidebarCollapsed() ? 'sidenav-collapsed' : ''">
+  <!-- Logo e botão colapsar -->
+  <div class="logo-container">
+    <button class="logo" (click)="toggleCollapse()">
+      <i class="bi bi-layout-sidebar"></i>
+    </button>
+    @if (!isSidebarCollapsed()) {
+      <div class="logo-text">Pergeco</div>
+      <button class="btn-close" (click)="closeSidenav()">
+        <i class="fal fa-times close-icon"></i>
+      </button>
+    }
+  </div>
+
+  <!-- Navegação -->
+  <div class="sidenav-nav">
+    @for (item of items; track $index) {
+      <li class="sidenav-nav-item" [class.has-submenu]="item.submenu" [class.open]="openSubmenu === item.label">
+        
+        <!-- Item COM ou SEM submenu -->
+        <a class="sidenav-nav-link" href="javascript:void(0)" 
+           (click)="handleSubmenuClick(item)"
+           [routerLinkActive]="!item.submenu ? 'active' : ''"
+           [routerLink]="!item.submenu ? item.routeLink : null">
+          <i class="sidenav-link-icon" [class]="item.icon"></i>
+          @if (!isSidebarCollapsed()) {
+            <span class="sidenav-link-text">{{ item.label }}</span>
+          }
+        </a>
+
+        <!-- Submenu -->
+        @if (item.submenu) {
+          <ul class="submenu" [ngClass]="{ 'collapsed': isSidebarCollapsed() }">
+            @for (sub of item.submenu; track $index) {
+              <li>
+                <a [routerLink]="sub.route" routerLinkActive="active-sub" [routerLinkActiveOptions]="{ exact: true }">
+                  <i [class]="sub.icon"></i>
+                  @if (!isSidebarCollapsed()) {
+                    <span>{{ sub.label }}</span>
+                  }
+                </a>
+              </li>
+            }
+          </ul>
+        }
+      </li>
+    }
+
+    <!-- Rodapé -->
+    <div class="sidenav-footer">
+      <div class="btn-group dropup w-100">
+        <button type="button" class="btn btn-secondary dropdown-toggle w-100" data-bs-toggle="dropdown">
+          @if (!isSidebarCollapsed()) {
+            {{ userName }}
+          } @else {
+            <i class="bi bi-person-circle"></i>
+          }
+        </button>
+        <ul class="dropdown-menu w-100">
+          <li><a class="dropdown-item" href="/configuracoes"><i class="bi bi-gear me-2"></i>Configurações</a></li>
+          <li><a class="dropdown-item" href="/perfil"><i class="bi bi-person-fill-gear me-2"></i>Perfil</a></li>
+          <li>
+            <button class="dropdown-item" (click)="toggleDarkMode()">
+              <i [class]="isDarkMode ? 'bi bi-toggle2-on' : 'bi bi-toggle2-off'"></i>
+              <span class="ms-2">Dark mode</span>
+            </button>
+          </li>
+          <li><hr class="dropdown-divider"></li>
+          <li><button class="dropdown-item text-danger" (click)="logout()">Sair</button></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

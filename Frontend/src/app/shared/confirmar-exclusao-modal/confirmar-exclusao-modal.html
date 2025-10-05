@@ -1,0 +1,19 @@
+<div class="modal-header bg-danger text-white">
+  <h5 class="modal-title">Confirmar Exclusão</h5>
+  <button type="button" class="btn-close btn-close-white" aria-label="Close" (click)="cancelar()"></button>
+</div>
+<div class="modal-body">
+  <p>Tem certeza que deseja excluir a categoria <strong class="text-danger">{{ categoria.name }}</strong>?</p>
+  <div *ngIf="categoria.subcategories?.length">
+    <p>As seguintes subcategorias também serão excluídas:</p>
+    <ul class="list-group list-group-sm">
+      <li *ngFor="let sub of categoria.subcategories" class="list-group-item list-group-item-light">
+        {{ sub.name }}
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-outline-secondary" (click)="cancelar()">Cancelar</button>
+  <button class="btn btn-danger" (click)="confirmar()">Excluir</button>
+</div>

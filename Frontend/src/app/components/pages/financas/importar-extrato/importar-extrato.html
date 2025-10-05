@@ -1,0 +1,103 @@
+<div class="container mt-4">
+  <h3 class="mb-4">Importar Extrato Bancário</h3>
+
+  <!-- Input de arquivo -->
+  <div class="mb-3">
+    <input type="file" class="form-control" (change)="onArquivoSelecionado($event)" accept=".csv,.txt">
+    <div *ngIf="arquivoSelecionado" class="form-text">Arquivo selecionado: {{ arquivoSelecionado.name }}</div>
+  </div>
+
+  <button class="btn btn-primary" (click)="enviarArquivo()" [disabled]="!arquivoSelecionado || carregando">
+    {{ carregando ? 'Enviando...' : 'Importar Extrato' }}
+  </button>
+
+  <!-- Erro geral -->
+  <div *ngIf="erro" class="alert alert-danger mt-3">{{ erro }}</div>
+
+  <!-- Lista de registros importados -->
+  <div *ngIf="registros.length > 0" class="mt-4">
+    <h5 class="mb-3">Prévia dos Registros</h5>
+
+    <table class="table table-bordered table-hover table-sm">
+      <thead class="table-light">
+        <tr>
+          <th>Data</th>
+          <th>Valor</th>
+          <th>Tipo</th>
+          <th>Descrição</th>
+          <th class="text-center">Status</th>
+          <th class="text-center">Ação</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let r of registros; let i = index" 
+            [class.table-danger]="!r.valido" 
+            [class.table-success]="r.valido">
+          <td>{{ r.data }}</td>
+          <td [ngClass]="{ 'text-danger': r.tipo === 'despesa', 'text-success': r.tipo === 'receita' }">
+            {{ r.valor | currency:'BRL':'symbol-narrow' }}
+          </td>
+          <!-- Categoria -->
+          <td>
+            <select
+              class="form-select"
+              [(ngModel)]="r.categoria_id"
+              [ngModelOptions]="{ standalone: true }"
+              (change)="r.subcategoria_id = null"
+            >
+              <option [ngValue]="null" disabled selected>Selecione...</option>
+              <option
+                *ngFor="let categoria of getCategoriasPorTipo(r.valor < 0 ? 'despesa' : 'receita')"
+                [ngValue]="categoria.id"
+              >
+                {{ categoria.name }}
+              </option>
+            </select>
+          </td>
+
+          <!-- Subcategoria -->
+          <td>
+            <select
+              class="form-select"
+              [(ngModel)]="r.subcategoria_id"
+              [ngModelOptions]="{ standalone: true }"
+              [disabled]="!r.categoria_id"
+            >
+              <option [ngValue]="null" disabled selected>Selecione...</option>
+              <option
+                *ngFor="let sub of getSubcategoriasDaCategoria(r.categoria_id!)"
+                [ngValue]="sub.id"
+              >
+                {{ sub.name }}
+              </option>
+            </select>
+          </td>
+          <td>
+            <span class="badge" [ngClass]="{ 'bg-success': r.tipo === 'receita', 'bg-danger': r.tipo === 'despesa' }">
+              {{ r.tipo }}
+            </span>
+          </td>
+          <td>{{ r.descricao }}</td>
+          <td class="text-center">
+            <span *ngIf="r.valido" class="text-success">✔️</span>
+            <span *ngIf="!r.valido" class="text-danger" [title]="r.erro">⚠️</span>
+          </td>
+          <td class="text-center">
+            <button class="btn btn-sm btn-outline-danger" (click)="excluirRegistro(i)" title="Excluir">
+              🗑️
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Ações finais -->
+    <div class="d-flex justify-content-end mt-3">
+      <button class="btn btn-success" 
+              (click)="salvarRegistros()" 
+              [disabled]="nenhumRegistroValido">
+        Salvar Registros Válidos
+      </button>
+    </div>
+  </div>
+</div>

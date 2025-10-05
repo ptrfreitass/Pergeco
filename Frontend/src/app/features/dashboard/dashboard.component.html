@@ -1,0 +1,43 @@
+<div class="dashboard-container">
+  <div class="dashboard-header">
+    <h1>Dashboard</h1>
+    <div>
+      <button class="btn-test" (click)="testInterceptor()" style="margin-right: 10px;">🧪 Testar Interceptor</button>
+      <button class="btn-logout" (click)="logout()">Sair</button>
+    </div>
+  </div>
+
+  @if (currentUser) {
+    <div class="welcome-card">
+      <h2>Bem-vindo, {{ currentUser.name }}! 👋</h2>
+      <p>E-mail: {{ currentUser.email }}</p>
+      <p class="success-message">✅ Autenticação funcionando perfeitamente!</p>
+    </div>
+  }
+
+  <div class="info-card">
+    <h3>🎉 Sprint 1 Completa!</h3>
+    <p>A autenticação está funcionando. Próximos passos:</p>
+    <ul>
+      <li>✅ Backend com Laravel Sanctum</li>
+      <li>✅ Frontend com Angular</li>
+      <li>✅ Login e Registro</li>
+      <li>✅ Guards e Interceptors</li>
+      <li>⏳ Sprint 2: Layout com Sidebar</li>
+    </ul>
+  </div>
+
+  <div class="info-card" style="margin-top: 20px; background-color: #fff3cd; border-left: 4px solid #ffc107;">
+    <h3>🧪 Como Testar o Interceptor</h3>
+    <ol>
+      <li>Abra o DevTools (F12)</li>
+      <li>Vá para a aba <strong>Console</strong></li>
+      <li>Vá para a aba <strong>Network</strong> (Rede)</li>
+      <li>Clique no botão "🧪 Testar Interceptor" acima</li>
+      <li>No Console, você verá logs do interceptor</li>
+      <li>Na aba Network, procure pela requisição <code>me</code></li>
+      <li>Clique nela e vá para <strong>Headers</strong></li>
+      <li>Procure por <code>Authorization: Bearer {{ '{' }}token{{ '}' }}</code> nos <strong>Request Headers</strong></li>
+    </ol>
+  </div>
+</div>

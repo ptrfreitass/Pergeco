@@ -1,0 +1,29 @@
+<h3>{{ categoria ? 'Editar Categoria' : 'Nova Categoria' }}</h3>
+
+<form [formGroup]="form" (ngSubmit)="salvar()">
+  <div>
+    <label>Nome:</label>
+    <input type="text" formControlName="name" required />
+  </div>
+
+  <div>
+    <label>Tipo:</label>
+    <select formControlName="type">
+      <option value="despesa">Despesa</option>
+      <option value="receita">Receita</option>
+    </select>
+  </div>
+
+  <div formArrayName="subcategories">
+    <label>Subcategorias:</label>
+    <div *ngFor="let sub of subcategories.controls; let i = index" [formGroupName]="i">
+      <input formControlName="name" placeholder="Nome da subcategoria" />
+      <button type="button" (click)="removerSubcategoria(i)">Remover</button>
+    </div>
+    <button type="button" (click)="adicionarSubcategoria()">+ Subcategoria</button>
+  </div>
+
+  <button type="submit" [disabled]="form.invalid">Salvar</button>
+  <button *ngIf="categoria" type="button" (click)="excluirCategoria()">Excluir Categoria</button>
+</form>
+

@@ -1,0 +1,4 @@
+<div>
+    <app-sidebar [isSidebarCollapsed]="isSidebarCollapsed()" (changeIsSidebarCollapsed)="changeIsSidebarCollapsed($event)"/>
+    <app-main [isSidebarCollapsed]="isSidebarCollapsed()" [screenWidth]="screenWidth()" />
+</div>

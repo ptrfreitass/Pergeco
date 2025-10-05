@@ -1,0 +1,116 @@
+.dashboard-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 40px 20px;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto 30px;
+
+  h1 {
+    color: white;
+    font-size: 32px;
+    margin: 0;
+  }
+
+  .btn-logout,
+  .btn-test {
+    padding: 10px 24px;
+    background: white;
+    color: #667eea;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 20px rgba(255, 255, 255, 0.3);
+    }
+  }
+
+  .btn-test {
+    background: #ffc107;
+    color: #333;
+
+    &:hover {
+      background: #ffb300;
+    }
+  }
+}
+
+.welcome-card,
+.info-card {
+  background: white;
+  border-radius: 12px;
+  padding: 30px;
+  max-width: 1200px;
+  margin: 0 auto 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+}
+
+.welcome-card {
+  h2 {
+    color: #333;
+    margin: 0 0 15px 0;
+    font-size: 28px;
+  }
+
+  p {
+    color: #666;
+    margin: 10px 0;
+    font-size: 16px;
+  }
+
+  .success-message {
+    color: #4caf50;
+    font-weight: 600;
+    margin-top: 20px;
+    font-size: 18px;
+  }
+}
+
+.info-card {
+  h3 {
+    color: #333;
+    margin: 0 0 15px 0;
+    font-size: 24px;
+  }
+
+  p {
+    color: #666;
+    margin: 10px 0;
+  }
+
+  ul {
+    margin: 15px 0;
+    padding-left: 20px;
+
+    li {
+      color: #666;
+      margin: 8px 0;
+      font-size: 16px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard-header {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+
+    h1 {
+      font-size: 24px;
+    }
+  }
+
+  .welcome-card h2 {
+    font-size: 22px;
+  }
+}

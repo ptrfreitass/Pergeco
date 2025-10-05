@@ -1,0 +1,129 @@
+<div class="register-container">
+  <div class="register-card">
+    <div class="register-header">
+      <h1>Pergeco</h1>
+      <p>Crie sua conta gratuitamente</p>
+    </div>
+
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="register-form">
+      <!-- Name Field -->
+      <div class="form-group">
+        <label for="name">Nome completo</label>
+        <input
+          type="text"
+          id="name"
+          formControlName="name"
+          placeholder="Seu nome"
+          [class.error]="name?.invalid && name?.touched"
+        />
+        @if (name?.invalid && name?.touched) {
+          <div class="error-message">
+            @if (name?.errors?.['required']) {
+              <span>Nome é obrigatório</span>
+            }
+            @if (name?.errors?.['minlength']) {
+              <span>Nome deve ter no mínimo 3 caracteres</span>
+            }
+            @if (name?.errors?.['maxlength']) {
+              <span>Nome deve ter no máximo 255 caracteres</span>
+            }
+          </div>
+        }
+      </div>
+
+      <!-- Email Field -->
+      <div class="form-group">
+        <label for="email">E-mail</label>
+        <input
+          type="email"
+          id="email"
+          formControlName="email"
+          placeholder="seu@email.com"
+          [class.error]="email?.invalid && email?.touched"
+        />
+        @if (email?.invalid && email?.touched) {
+          <div class="error-message">
+            @if (email?.errors?.['required']) {
+              <span>E-mail é obrigatório</span>
+            }
+            @if (email?.errors?.['email']) {
+              <span>E-mail inválido</span>
+            }
+          </div>
+        }
+      </div>
+
+      <!-- Password Field -->
+      <div class="form-group">
+        <label for="password">Senha</label>
+        <input
+          type="password"
+          id="password"
+          formControlName="password"
+          placeholder="••••••••"
+          [class.error]="password?.invalid && password?.touched"
+        />
+        @if (password?.invalid && password?.touched) {
+          <div class="error-message">
+            @if (password?.errors?.['required']) {
+              <span>Senha é obrigatória</span>
+            }
+            @if (password?.errors?.['minlength']) {
+              <span>Senha deve ter no mínimo 8 caracteres</span>
+            }
+          </div>
+        }
+      </div>
+
+      <!-- Password Confirmation Field -->
+      <div class="form-group">
+        <label for="password_confirmation">Confirmar senha</label>
+        <input
+          type="password"
+          id="password_confirmation"
+          formControlName="password_confirmation"
+          placeholder="••••••••"
+          [class.error]="(password_confirmation?.invalid && password_confirmation?.touched) || (!passwordsMatch && password_confirmation?.touched)"
+        />
+        @if (password_confirmation?.invalid && password_confirmation?.touched) {
+          <div class="error-message">
+            @if (password_confirmation?.errors?.['required']) {
+              <span>Confirmação de senha é obrigatória</span>
+            }
+          </div>
+        }
+        @if (!passwordsMatch && password_confirmation?.touched && !password_confirmation?.errors?.['required']) {
+          <div class="error-message">
+            <span>As senhas não conferem</span>
+          </div>
+        }
+      </div>
+
+      <!-- Error Message -->
+      @if (errorMessage) {
+        <div class="alert alert-error">
+          {{ errorMessage }}
+        </div>
+      }
+
+      <!-- Submit Button -->
+      <button
+        type="submit"
+        class="btn btn-primary"
+        [disabled]="isLoading"
+      >
+        @if (!isLoading) {
+          <span>Criar conta</span>
+        }
+        @if (isLoading) {
+          <span>Criando conta...</span>
+        }
+      </button>
+
+      <!-- Login Link -->
+      <div class="login-link" [class.disabled]="isLoading">
+        <p>Já tem uma conta? <a routerLink="/login" [class.disabled]="isLoading">Faça login</a></p>
+      </div>
+    </form>
+  </div>
+</div>
