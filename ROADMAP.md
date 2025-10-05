@@ -19,18 +19,18 @@ Criar uma base sólida e bem documentada para o desenvolvimento.
 
 ### Tarefas Backend
 - [x] Limpar estrutura Laravel atual
-- [ ] Configurar .env.example com todas as variáveis
-- [ ] Configurar CORS para comunicação com Angular
-- [ ] Configurar Laravel Sanctum
-- [ ] Criar migration inicial de Users
-- [ ] Configurar Docker Compose (Laravel Sail)
-- [ ] Testar conexão com PostgreSQL
-- [ ] Criar seeders básicos
+- [x] Configurar .env.example com todas as variáveis
+- [x] Configurar CORS para comunicação com Angular
+- [x] Configurar Laravel Sanctum
+- [x] Criar migration inicial de Users
+- [x] Configurar Docker Compose (Laravel Sail)
+- [x] Testar conexão com PostgreSQL
+- [x] Criar seeders básicos
 
 ### Tarefas Frontend
 - [x] Limpar estrutura Angular atual
-- [ ] Configurar arquitetura modular
-- [ ] Configurar environment (dev/prod)
+- [x] Configurar arquitetura modular
+- [x] Configurar environment (dev/prod)
 - [ ] Configurar proxy para API
 - [ ] Instalar e configurar Angular Material
 - [ ] Criar estrutura de pastas padronizada
